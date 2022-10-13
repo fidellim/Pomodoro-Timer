@@ -1,5 +1,5 @@
 {
-    "name": "reactjs-tailwindcss-boilerplate",
+    "name": "pomodoro-app",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
