@@ -8,11 +8,6 @@ const ONEMIN = 60
 
 const Pomodoro = () => {
     const audioRef = useRef()
-    // const [shortBreak, setShortBreak] = useState(5)
-    // const [pomodoro, setPomodoro] = useState(25)
-    // const [time, setTime] = useState(pomodoro * ONEMIN)
-    // const [isPlaying, setIsPlaying] = useState(false)
-    // const [isSession, setIsSession] = useState(true)
 
     const [pomodoro, setPomodoro] = useState({
         shortBreak: 5,
@@ -33,7 +28,6 @@ const Pomodoro = () => {
     const startPausePomodoro = () => {
         if (pomodoro.isPlaying) {
             clearInterval(myInterval)
-            // setIsPlaying(false)
             setPomodoro((prev) => ({
                 ...prev,
                 isPlaying: false,
@@ -72,11 +66,7 @@ const Pomodoro = () => {
     }
 
     const resetPomodoro = () => {
-        // setTime(pomodoro * ONEMIN)
         clearInterval(myInterval)
-        // setIsPlaying(false)
-        // setPomodoro(25)
-        // setShortBreak(5)
         setPomodoro((prev) => ({
             shortBreak: 5,
             session: 25,
@@ -91,20 +81,17 @@ const Pomodoro = () => {
     const handleShortBreak = (event) => {
         const { value } = event.target
         if (value >= 1 && value <= 60) {
-            // setShortBreak(value)
             setPomodoro((prev) => ({
                 ...prev,
                 shortBreak: value,
             }))
         } else if (value < 1) {
-            // setShortBreak(1)
             setPomodoro((prev) => ({
                 ...prev,
                 shortBreak: 1,
             }))
         } else if (value > 60) {
             const valueString = String(value)
-            // setShortBreak(Number(valueString.slice(0, -1)))
             setPomodoro((prev) => ({
                 ...prev,
                 shortBreak: Number(valueString.slice(0, -1)),
@@ -115,13 +102,11 @@ const Pomodoro = () => {
     const decreaseShortBreak = () => {
         const value = Number(pomodoro.shortBreak) - 1
         if (value >= 1 && value <= 60) {
-            // setShortBreak(value)
             setPomodoro((prev) => ({
                 ...prev,
                 shortBreak: value,
             }))
         } else if (value < 1) {
-            // setShortBreak(1)
             setPomodoro((prev) => ({
                 ...prev,
                 shortBreak: 1,
@@ -132,13 +117,11 @@ const Pomodoro = () => {
     const increaseShortBreak = () => {
         const value = Number(pomodoro.shortBreak) + 1
         if (value >= 1 && value <= 60) {
-            // setShortBreak(value)
             setPomodoro((prev) => ({
                 ...prev,
                 shortBreak: value,
             }))
         } else if (value > 60) {
-            // setShortBreak(60)
             setPomodoro((prev) => ({
                 ...prev,
                 shortBreak: 60,
@@ -149,14 +132,12 @@ const Pomodoro = () => {
     const handleSession = (event) => {
         const { value } = event.target
         if (value >= 1 && value <= 60) {
-            // setPomodoro(value)
             setPomodoro((prev) => ({
                 ...prev,
                 session: value,
                 timeInSecs: value * ONEMIN,
             }))
         } else if (value < 1) {
-            // setPomodoro(1)
             setPomodoro((prev) => ({
                 ...prev,
                 session: 1,
@@ -164,7 +145,6 @@ const Pomodoro = () => {
             }))
         } else if (value > 60) {
             const valueString = String(value)
-            // setPomodoro(Number(valueString.slice(0, -1)))
             setPomodoro((prev) => ({
                 ...prev,
                 session: Number(valueString.slice(0, -1)),
@@ -176,14 +156,12 @@ const Pomodoro = () => {
     const decreaseSession = () => {
         const value = Number(pomodoro.session) - 1
         if (value >= 1 && value <= 60) {
-            // setPomodoro(value)
             setPomodoro((prev) => ({
                 ...prev,
                 session: value,
                 timeInSecs: value * ONEMIN,
             }))
         } else if (value < 1) {
-            // setPomodoro(1)
             setPomodoro((prev) => ({
                 ...prev,
                 session: 1,
@@ -195,14 +173,12 @@ const Pomodoro = () => {
     const increaseSession = () => {
         const value = Number(pomodoro.session) + 1
         if (value >= 1 && value <= 60) {
-            // setPomodoro(value)
             setPomodoro((prev) => ({
                 ...prev,
                 session: value,
                 timeInSecs: value * ONEMIN,
             }))
         } else if (value > 60) {
-            // setPomodoro(60)
             setPomodoro((prev) => ({
                 ...prev,
                 session: 60,
