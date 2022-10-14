@@ -1,6 +1,8 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
 import { useEffect, useState } from 'react'
 
+let myInterval = null
+
 const Pomodoro = () => {
     const [shortBreak, setShortBreak] = useState(5)
     const [pomodoro, setPomodoro] = useState(25)
@@ -19,19 +21,20 @@ const Pomodoro = () => {
         return `${minutes}:${seconds}`
     }
 
-    const startPomodoro = () => {
-        setInterval(() => {
-            let time = pomodoro * 60
-            let minutes = Math.floor(time / 60)
-            let seconds = time % 60
+    const startPausePomodoro = () => {
+        if (isPlaying) {
+            console.log(myInterval)
+            clearInterval(myInterval)
+            setIsPlaying(false)
+        } else {
+            myInterval = setInterval(() => {
+                setTime((prev) => prev - 1)
+            }, 1000)
+            console.log(myInterval)
+            setIsPlaying(true)
+        }
+    }
 
-            minutes = minutes < 10 ? '0' + minutes : minutes
-            seconds = seconds < 10 ? '0' + seconds : seconds
-
-            // console.log(`${minutes}:${seconds}`)
-            // setStart(`${minutes}:${seconds}`)
-            time--
-        }, 1000)
     }
 
     const handleShortBreak = (event) => {
