@@ -213,7 +213,7 @@ const Pomodoro = () => {
 
     return (
         <div>
-            <h1>Pomodoro</h1>
+            <h1 className="text-[30px] font-extrabold text-center">Pomodoro</h1>
             <div id="break-label">Short Break</div>
             <div>
                 <input
@@ -240,7 +240,7 @@ const Pomodoro = () => {
                     <ChevronDownIcon />
                 </button>
             </div>
-            <div id="session-label">Pomodoro</div>
+            <div id="session-label">Session</div>
             <div>
                 <input
                     id="session-length"
@@ -289,7 +289,10 @@ const Pomodoro = () => {
 
                 <button id="start_stop" onClick={startPausePomodoro}>
                     {pomodoro.isPlaying ? 'Stop' : 'Start'}
+                </button>
+                <button id="reset" onClick={resetPomodoro}>
                     reset
+                </button>
             </div>
 
             <audio
