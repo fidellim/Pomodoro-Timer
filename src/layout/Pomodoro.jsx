@@ -1,8 +1,11 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
+import { useState, useRef } from 'react'
 
 let myInterval = null
+const ONEMIN = 60
 
 const Pomodoro = () => {
+    const audioRef = useRef()
     // const [shortBreak, setShortBreak] = useState(5)
     // const [pomodoro, setPomodoro] = useState(25)
     // const [time, setTime] = useState(pomodoro * ONEMIN)
@@ -106,37 +109,35 @@ const Pomodoro = () => {
                 <input
                     id="session-length"
                     type="number"
-                    value={pomodoro}
-                    onChange={handlePomodoro}
                 />
                 <button
                     id="session-increment"
-                    onClick={increasePomodoro}
                     className="h-6 w-6 disabled:opacity-75"
-                    disabled={isPlaying}
                 >
                     <ChevronUpIcon />
                 </button>
                 <button
                     id="session-decrement"
-                    onClick={decreasePomodoro}
                     className="h-6 w-6 disabled:opacity-75"
-                    disabled={isPlaying}
                 >
                     <ChevronDownIcon />
                 </button>
             </div>
 
             <div>
-                <h2 id="timer-label">Session</h2>
-                <h2 id="time-left">{convertTime(time)}</h2>
                 <h2 id="start_stop" onClick={startPausePomodoro}>
-                    {isPlaying ? 'Stop' : 'Start'}
                 </h2>
                 <h2 id="reset" onClick={resetPomodoro}>
                     reset
                 </h2>
             </div>
+
+            <audio
+                id="beep"
+                ref={audioRef}
+                preload="auto"
+                src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+            ></audio>
         </div>
     )
 }
