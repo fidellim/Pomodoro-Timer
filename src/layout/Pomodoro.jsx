@@ -26,10 +26,43 @@ const Pomodoro = () => {
     }
 
     const startPausePomodoro = () => {
+        if (pomodoro.isPlaying) {
             clearInterval(myInterval)
+            // setIsPlaying(false)
+            setPomodoro((prev) => ({
+                ...prev,
+                isPlaying: false,
+            }))
         } else {
             myInterval = setInterval(() => {
+                setPomodoro((prev) => {
+                    if (prev.timeInSecs === 0) {
+                        audioRef.current.play()
+                        if (prev.isSession) {
+                            return {
+                                ...prev,
+                                isSession: !prev.isSession,
+                                timeInSecs: prev.shortBreak * ONEMIN,
+                            }
+                        } else {
+                            return {
+                                ...prev,
+                                isSession: !prev.isSession,
+                                timeInSecs: prev.session * ONEMIN,
+                            }
+                        }
+                    } else {
+                        return {
+                            ...prev,
+                            timeInSecs: prev.timeInSecs - 1,
+                        }
+                    }
+                })
             }, 1000)
+            setPomodoro((prev) => ({
+                ...prev,
+                isPlaying: true,
+            }))
         }
     }
 
