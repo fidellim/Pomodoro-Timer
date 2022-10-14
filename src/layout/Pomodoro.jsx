@@ -144,21 +144,68 @@ const Pomodoro = () => {
         }
     }
 
+    const handleSession = (event) => {
         const { value } = event.target
         if (value >= 1 && value <= 60) {
+            // setPomodoro(value)
+            setPomodoro((prev) => ({
+                ...prev,
+                session: value,
+                timeInSecs: value * ONEMIN,
+            }))
         } else if (value < 1) {
+            // setPomodoro(1)
+            setPomodoro((prev) => ({
+                ...prev,
+                session: 1,
+                timeInSecs: 1 * ONEMIN,
+            }))
         } else if (value > 60) {
             const valueString = String(value)
+            // setPomodoro(Number(valueString.slice(0, -1)))
+            setPomodoro((prev) => ({
+                ...prev,
+                session: Number(valueString.slice(0, -1)),
+                timeInSecs: Number(valueString.slice(0, -1)) * ONEMIN,
+            }))
         }
     }
 
+    const decreaseSession = () => {
+        const value = Number(pomodoro.session) - 1
         if (value >= 1 && value <= 60) {
+            // setPomodoro(value)
+            setPomodoro((prev) => ({
+                ...prev,
+                session: value,
+                timeInSecs: value * ONEMIN,
+            }))
         } else if (value < 1) {
+            // setPomodoro(1)
+            setPomodoro((prev) => ({
+                ...prev,
+                session: 1,
+                timeInSecs: 1 * ONEMIN,
+            }))
         }
     }
 
+    const increaseSession = () => {
+        const value = Number(pomodoro.session) + 1
         if (value >= 1 && value <= 60) {
+            // setPomodoro(value)
+            setPomodoro((prev) => ({
+                ...prev,
+                session: value,
+                timeInSecs: value * ONEMIN,
+            }))
         } else if (value > 60) {
+            // setPomodoro(60)
+            setPomodoro((prev) => ({
+                ...prev,
+                session: 60,
+                timeInSecs: 60 * ONEMIN,
+            }))
         }
     }
 
