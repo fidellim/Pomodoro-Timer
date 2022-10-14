@@ -4,21 +4,12 @@ import { useEffect, useState } from 'react'
 const Pomodoro = () => {
     const [shortBreak, setShortBreak] = useState(5)
     const [pomodoro, setPomodoro] = useState(25)
-    const [start, setStart] = useState(`${pomodoro}:00`)
     const [time, setTime] = useState(pomodoro * 60)
+    const [isPlaying, setIsPlaying] = useState(false)
 
     useEffect(() => {
-        setStart(`${pomodoro}:00`)
         setTime(pomodoro * 60)
     }, [pomodoro])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTime((prev) => prev - 1)
-        }, 1000)
-
-        return () => clearInterval(interval)
-    }, [])
 
     const convertTime = (sec) => {
         let minutes = Math.floor(sec / 60)
@@ -115,16 +106,22 @@ const Pomodoro = () => {
                     value={shortBreak}
                     onChange={handleShortBreak}
                 />
-                <ChevronUpIcon
+                <button
                     id="break-increment"
                     onClick={increaseShortBreak}
-                    className="h-6 w-6"
-                />
-                <ChevronDownIcon
+                    className="h-6 w-6 disabled:opacity-75"
+                    disabled={isPlaying}
+                >
+                    <ChevronUpIcon />
+                </button>
+                <button
                     id="break-decrement"
                     onClick={decreaseShortBreak}
-                    className="h-6 w-6"
-                />
+                    className="h-6 w-6 disabled:opacity-75"
+                    disabled={isPlaying}
+                >
+                    <ChevronDownIcon />
+                </button>
             </div>
             <div id="session-label">Pomodoro</div>
             <div>
@@ -134,16 +131,22 @@ const Pomodoro = () => {
                     value={pomodoro}
                     onChange={handlePomodoro}
                 />
-                <ChevronUpIcon
+                <button
                     id="session-increment"
                     onClick={increasePomodoro}
-                    className="h-6 w-6"
-                />
-                <ChevronDownIcon
+                    className="h-6 w-6 disabled:opacity-75"
+                    disabled={isPlaying}
+                >
+                    <ChevronUpIcon />
+                </button>
+                <button
                     id="session-decrement"
                     onClick={decreasePomodoro}
-                    className="h-6 w-6"
-                />
+                    className="h-6 w-6 disabled:opacity-75"
+                    disabled={isPlaying}
+                >
+                    <ChevronDownIcon />
+                </button>
             </div>
 
             <div>
