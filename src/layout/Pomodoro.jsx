@@ -89,21 +89,58 @@ const Pomodoro = () => {
     const handleShortBreak = (event) => {
         const { value } = event.target
         if (value >= 1 && value <= 60) {
+            // setShortBreak(value)
+            setPomodoro((prev) => ({
+                ...prev,
+                shortBreak: value,
+            }))
         } else if (value < 1) {
+            // setShortBreak(1)
+            setPomodoro((prev) => ({
+                ...prev,
+                shortBreak: 1,
+            }))
         } else if (value > 60) {
             const valueString = String(value)
+            // setShortBreak(Number(valueString.slice(0, -1)))
+            setPomodoro((prev) => ({
+                ...prev,
+                shortBreak: Number(valueString.slice(0, -1)),
+            }))
         }
     }
 
     const decreaseShortBreak = () => {
+        const value = Number(pomodoro.shortBreak) - 1
         if (value >= 1 && value <= 60) {
+            // setShortBreak(value)
+            setPomodoro((prev) => ({
+                ...prev,
+                shortBreak: value,
+            }))
         } else if (value < 1) {
+            // setShortBreak(1)
+            setPomodoro((prev) => ({
+                ...prev,
+                shortBreak: 1,
+            }))
         }
     }
 
     const increaseShortBreak = () => {
+        const value = Number(pomodoro.shortBreak) + 1
         if (value >= 1 && value <= 60) {
+            // setShortBreak(value)
+            setPomodoro((prev) => ({
+                ...prev,
+                shortBreak: value,
+            }))
         } else if (value > 60) {
+            // setShortBreak(60)
+            setPomodoro((prev) => ({
+                ...prev,
+                shortBreak: 60,
+            }))
         }
     }
 
