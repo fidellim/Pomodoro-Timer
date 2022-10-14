@@ -1,106 +1,75 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
-import { useEffect, useState } from 'react'
 
 let myInterval = null
 
 const Pomodoro = () => {
-    const [shortBreak, setShortBreak] = useState(5)
-    const [pomodoro, setPomodoro] = useState(25)
-    const [time, setTime] = useState(pomodoro * 60)
-    const [isPlaying, setIsPlaying] = useState(false)
+    // const [shortBreak, setShortBreak] = useState(5)
+    // const [pomodoro, setPomodoro] = useState(25)
+    // const [time, setTime] = useState(pomodoro * ONEMIN)
+    // const [isPlaying, setIsPlaying] = useState(false)
+    // const [isSession, setIsSession] = useState(true)
 
-    useEffect(() => {
-        setTime(pomodoro * 60)
-    }, [pomodoro])
+    const [pomodoro, setPomodoro] = useState({
+        shortBreak: 5,
+        session: 25,
+        timeInSecs: 25 * ONEMIN,
+        isPlaying: false,
+        isSession: true,
+    })
 
-    const convertTime = (sec) => {
-        let minutes = Math.floor(sec / 60)
-        let seconds = sec % 60
         minutes = minutes < 10 ? '0' + minutes : minutes
         seconds = seconds < 10 ? '0' + seconds : seconds
         return `${minutes}:${seconds}`
     }
 
     const startPausePomodoro = () => {
-        if (isPlaying) {
-            console.log(myInterval)
             clearInterval(myInterval)
-            setIsPlaying(false)
         } else {
             myInterval = setInterval(() => {
-                setTime((prev) => prev - 1)
             }, 1000)
-            console.log(myInterval)
-            setIsPlaying(true)
         }
     }
 
     const resetPomodoro = () => {
-        setTime(pomodoro * 60)
         clearInterval(myInterval)
-        setIsPlaying(false)
-        setPomodoro(25)
-        setShortBreak(5)
     }
 
     const handleShortBreak = (event) => {
         const { value } = event.target
         if (value >= 1 && value <= 60) {
-            setShortBreak(value)
         } else if (value < 1) {
-            setShortBreak(1)
         } else if (value > 60) {
             const valueString = String(value)
-            setShortBreak(Number(valueString.slice(0, -1)))
         }
     }
 
     const decreaseShortBreak = () => {
-        const value = Number(shortBreak) - 1
         if (value >= 1 && value <= 60) {
-            setShortBreak(value)
         } else if (value < 1) {
-            setShortBreak(1)
         }
     }
 
     const increaseShortBreak = () => {
-        const value = Number(shortBreak) + 1
         if (value >= 1 && value <= 60) {
-            setShortBreak(value)
         } else if (value > 60) {
-            setShortBreak(60)
         }
     }
 
-    const handlePomodoro = (event) => {
         const { value } = event.target
         if (value >= 1 && value <= 60) {
-            setPomodoro(value)
         } else if (value < 1) {
-            setPomodoro(1)
         } else if (value > 60) {
             const valueString = String(value)
-            setPomodoro(Number(valueString.slice(0, -1)))
         }
     }
 
-    const decreasePomodoro = () => {
-        const value = Number(pomodoro) - 1
         if (value >= 1 && value <= 60) {
-            setPomodoro(value)
         } else if (value < 1) {
-            setPomodoro(1)
         }
     }
 
-    const increasePomodoro = () => {
-        const value = Number(pomodoro) + 1
-        console.log('Value: ', value)
         if (value >= 1 && value <= 60) {
-            setPomodoro(value)
         } else if (value > 60) {
-            setPomodoro(60)
         }
     }
 
