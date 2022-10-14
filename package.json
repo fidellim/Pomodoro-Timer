@@ -16,7 +16,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "set NODE_ENV=test& mocha --require @babel/register src/test/*.test.js",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
