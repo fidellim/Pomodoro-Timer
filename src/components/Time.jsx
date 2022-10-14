@@ -13,7 +13,7 @@ const Time = ({
     value,
 }) => {
     return (
-        <>
+        <div className="flex flex-col gap-2">
             <div id={titleId}>{title}</div>
             <div className="relative bg-fontColor text-background rounded-md">
                 <input
@@ -43,7 +43,7 @@ const Time = ({
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
