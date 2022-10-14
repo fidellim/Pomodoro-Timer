@@ -243,16 +243,23 @@ const Pomodoro = () => {
                 <input
                     id="session-length"
                     type="number"
+                    value={pomodoro.session}
+                    onChange={handleSession}
+                    disabled={pomodoro.isPlaying}
                 />
                 <button
                     id="session-increment"
+                    onClick={increaseSession}
                     className="h-6 w-6 disabled:opacity-75"
+                    disabled={pomodoro.isPlaying}
                 >
                     <ChevronUpIcon />
                 </button>
                 <button
                     id="session-decrement"
+                    onClick={decreaseSession}
                     className="h-6 w-6 disabled:opacity-75"
+                    disabled={pomodoro.isPlaying}
                 >
                     <ChevronDownIcon />
                 </button>
