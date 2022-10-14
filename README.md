@@ -43,6 +43,7 @@ Users should be able to:
 ### Useful resources
 
 -   [Hide arrows from input number](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
+-   [Pause audio](https://stackoverflow.com/questions/17636310/play-audio-and-restart-it-onclick)
 
 ## Author
 
