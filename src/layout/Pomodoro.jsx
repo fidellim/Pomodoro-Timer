@@ -266,7 +266,12 @@ const Pomodoro = () => {
             </div>
 
             <div>
+                <h2 id="timer-label">
+                    {pomodoro.isSession ? 'Session' : 'Break'}
+                </h2>
+                <h2 id="time-left">{convertTime(pomodoro.timeInSecs)}</h2>
                 <h2 id="start_stop" onClick={startPausePomodoro}>
+                    {pomodoro.isPlaying ? 'Stop' : 'Start'}
                 </h2>
                 <h2 id="reset" onClick={resetPomodoro}>
                     reset
