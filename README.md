@@ -24,8 +24,7 @@ Users should be able to:
 
 ![Solution Desktop](/images/solution_desktop.png)
 
-![Solution Mobile](/images/solution_mobile_1.png)
-![Solution Mobile](/images/solution_mobile_2.png)
+![Solution Mobile](/images/solution_mobile.png)
 
 ### Links
 
@@ -44,6 +43,8 @@ Users should be able to:
 
 -   [Hide arrows from input number](https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp)
 -   [Pause audio](https://stackoverflow.com/questions/17636310/play-audio-and-restart-it-onclick)
+-   [Pomodoro Test Cases from FCC](https://github.com/freeCodeCamp/testable-projects-fcc/blob/main/src/project-tests/25-5-clock-tests.js)
+-   [React Circular Progress](https://www.npmjs.com/package/react-circular-progressbar)
 
 ## Author
 
