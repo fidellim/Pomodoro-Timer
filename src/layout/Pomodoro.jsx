@@ -20,6 +20,9 @@ const Pomodoro = () => {
         isSession: true,
     })
 
+    const convertTime = (timeInSecs) => {
+        let minutes = Math.floor(timeInSecs / 60)
+        let seconds = timeInSecs % 60
         minutes = minutes < 10 ? '0' + minutes : minutes
         seconds = seconds < 10 ? '0' + seconds : seconds
         return `${minutes}:${seconds}`
