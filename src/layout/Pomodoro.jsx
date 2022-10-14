@@ -217,14 +217,15 @@ const Pomodoro = () => {
                 <input
                     id="break-length"
                     type="number"
-                    value={shortBreak}
+                    value={pomodoro.shortBreak}
                     onChange={handleShortBreak}
+                    disabled={pomodoro.isPlaying}
                 />
                 <button
                     id="break-increment"
                     onClick={increaseShortBreak}
                     className="h-6 w-6 disabled:opacity-75"
-                    disabled={isPlaying}
+                    disabled={pomodoro.isPlaying}
                 >
                     <ChevronUpIcon />
                 </button>
@@ -232,7 +233,7 @@ const Pomodoro = () => {
                     id="break-decrement"
                     onClick={decreaseShortBreak}
                     className="h-6 w-6 disabled:opacity-75"
-                    disabled={isPlaying}
+                    disabled={pomodoro.isPlaying}
                 >
                     <ChevronDownIcon />
                 </button>
