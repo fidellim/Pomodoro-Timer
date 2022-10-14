@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import Time from '../components/Timer'
+import Time from '../components/Time'
 
 let myInterval = null
 const ONEMIN = 60
