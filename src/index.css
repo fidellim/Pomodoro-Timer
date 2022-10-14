@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    :root {
+        --background: #161932;
+        --fontColor: #d7e0ff;
+    }
+
+    body {
+        background-color: var(--background);
+        color: var(--fontColor);
+    }
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
