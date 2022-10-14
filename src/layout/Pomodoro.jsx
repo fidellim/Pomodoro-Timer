@@ -35,6 +35,12 @@ const Pomodoro = () => {
         }
     }
 
+    const resetPomodoro = () => {
+        setTime(pomodoro * 60)
+        clearInterval(myInterval)
+        setIsPlaying(false)
+        setPomodoro(25)
+        setShortBreak(5)
     }
 
     const handleShortBreak = (event) => {
