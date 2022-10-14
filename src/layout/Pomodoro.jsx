@@ -266,18 +266,30 @@ const Pomodoro = () => {
                     <ChevronDownIcon />
                 </button>
             </div>
-
             <div>
-                <h2 id="timer-label">
-                    {pomodoro.isSession ? 'Session' : 'Break'}
-                </h2>
-                <h2 id="time-left">{convertTime(pomodoro.timeInSecs)}</h2>
-                <h2 id="start_stop" onClick={startPausePomodoro}>
+                <div className="max-w-[300px] w-full h-auto relative">
+                    <CircularProgressbar
+                        value={pomodoro.timeInSecs}
+                        maxValue={pomodoro.session * 60}
+                        strokeWidth="5"
+                        styles={buildStyles({
+                            pathColor: '#F87272',
+                            trailColor: '#161932',
+                        })}
+                    />
+                    <div className="flex flex-col items-center absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+                        <h2 id="timer-label" className="font-light text-[24px]">
+                            {pomodoro.isSession ? 'Session' : 'Break'}
+                        </h2>
+                        <h2 id="time-left" className="font-bold text-[48px]">
+                            {convertTime(pomodoro.timeInSecs)}
+                        </h2>
+                    </div>
+                </div>
+
+                <button id="start_stop" onClick={startPausePomodoro}>
                     {pomodoro.isPlaying ? 'Stop' : 'Start'}
-                </h2>
-                <h2 id="reset" onClick={resetPomodoro}>
                     reset
-                </h2>
             </div>
 
             <audio
