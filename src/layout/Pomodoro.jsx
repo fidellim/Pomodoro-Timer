@@ -70,7 +70,20 @@ const Pomodoro = () => {
     }
 
     const resetPomodoro = () => {
+        // setTime(pomodoro * ONEMIN)
         clearInterval(myInterval)
+        // setIsPlaying(false)
+        // setPomodoro(25)
+        // setShortBreak(5)
+        setPomodoro((prev) => ({
+            shortBreak: 5,
+            session: 25,
+            timeInSecs: 25 * ONEMIN,
+            isPlaying: false,
+            isSession: true,
+        }))
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
     }
 
     const handleShortBreak = (event) => {
