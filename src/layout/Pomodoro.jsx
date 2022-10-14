@@ -1,6 +1,11 @@
 import { useState, useRef } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import {
+    ArrowPathRoundedSquareIcon,
+    PauseIcon,
+    PlayIcon,
+} from '@heroicons/react/24/solid'
 import Time from '../components/Time'
 
 let myInterval = null
@@ -188,58 +193,65 @@ const Pomodoro = () => {
     }
 
     return (
-        <div>
-            <h1 className="text-[30px] font-extrabold text-center">Pomodoro</h1>
-            <Time
-                title="Short Break"
-                titleId="break-label"
-                inputId="break-length"
-                btnIncId="break-increment"
-                btnDecId="break-decrement"
-                handleValue={handleShortBreak}
-                handleInc={increaseShortBreak}
-                handleDec={decreaseShortBreak}
-                isPlaying={pomodoro.isPlaying}
-                value={pomodoro.shortBreak}
-            />
-            <Time
-                title="Session"
-                titleId="session-label"
-                inputId="session-length"
-                btnIncId="session-increment"
-                btnDecId="session-decrement"
-                handleValue={handleSession}
-                handleInc={increaseSession}
-                handleDec={decreaseSession}
-                isPlaying={pomodoro.isPlaying}
-                value={pomodoro.session}
-            />
-            <div>
-                <div className="max-w-[275px] w-full h-auto relative">
-                    <CircularProgressbar
-                        value={pomodoro.timeInSecs}
-                        maxValue={pomodoro.session * 60}
-                        strokeWidth="5"
-                        styles={buildStyles({
-                            pathColor: '#F87272',
-                            trailColor: '#161932',
-                        })}
-                    />
-                    <div className="flex flex-col items-center absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
-                        <h2 id="timer-label" className="font-light text-[24px]">
-                            {pomodoro.isSession ? 'Session' : 'Break'}
-                        </h2>
-                        <h2 id="time-left" className="font-bold text-[48px]">
-                            {convertTime(pomodoro.timeInSecs)}
-                        </h2>
-                    </div>
+        <div className="flex flex-col gap-2 justify-center items-center">
+            <h1 className="text-[30px] font-extrabold text-center mb-6">
+                Pomodoro
+            </h1>
+            <div className="flex flex-wrap gap-2 justify-center items-center mx-2">
+                <Time
+                    title="Short Break"
+                    titleId="break-label"
+                    inputId="break-length"
+                    btnIncId="break-increment"
+                    btnDecId="break-decrement"
+                    handleValue={handleShortBreak}
+                    handleInc={increaseShortBreak}
+                    handleDec={decreaseShortBreak}
+                    isPlaying={pomodoro.isPlaying}
+                    value={pomodoro.shortBreak}
+                />
+                <Time
+                    title="Session"
+                    titleId="session-label"
+                    inputId="session-length"
+                    btnIncId="session-increment"
+                    btnDecId="session-decrement"
+                    handleValue={handleSession}
+                    handleInc={increaseSession}
+                    handleDec={decreaseSession}
+                    isPlaying={pomodoro.isPlaying}
+                    value={pomodoro.session}
+                />
+            </div>
+            <div className="max-w-[275px] w-full h-auto relative mt-7 mb-3">
+                <CircularProgressbar
+                    value={pomodoro.timeInSecs}
+                    maxValue={pomodoro.session * 60}
+                    strokeWidth="5"
+                    styles={buildStyles({
+                        pathColor: '#F87272',
+                        trailColor: '#161932',
+                    })}
+                />
+                <div className="flex flex-col items-center absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+                    <h2 id="timer-label" className="font-light text-[24px]">
+                        {pomodoro.isSession ? 'Session' : 'Break'}
+                    </h2>
+                    <h2 id="time-left" className="font-bold text-[48px]">
+                        {convertTime(pomodoro.timeInSecs)}
+                    </h2>
                 </div>
-
-                <button id="start_stop" onClick={startPausePomodoro}>
-                    {pomodoro.isPlaying ? 'Stop' : 'Start'}
+            </div>
+            <div className="flex gap-3">
+                <button
+                    id="start_stop"
+                    onClick={startPausePomodoro}
+                    className="h-6 w-6"
+                >
+                    {pomodoro.isPlaying ? <PauseIcon /> : <PlayIcon />}
                 </button>
-                <button id="reset" onClick={resetPomodoro}>
-                    reset
+                <button id="reset" onClick={resetPomodoro} className="h-6 w-6">
+                    <ArrowPathRoundedSquareIcon />
                 </button>
             </div>
 
