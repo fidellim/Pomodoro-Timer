@@ -1,7 +1,7 @@
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
 import { useState, useRef } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import Time from '../components/Timer'
 
 let myInterval = null
 const ONEMIN = 60
@@ -214,60 +214,32 @@ const Pomodoro = () => {
     return (
         <div>
             <h1 className="text-[30px] font-extrabold text-center">Pomodoro</h1>
-            <div id="break-label">Short Break</div>
+            <Time
+                title="Short Break"
+                titleId="break-label"
+                inputId="break-length"
+                btnIncId="break-increment"
+                btnDecId="break-decrement"
+                handleValue={handleShortBreak}
+                handleInc={increaseShortBreak}
+                handleDec={decreaseShortBreak}
+                isPlaying={pomodoro.isPlaying}
+                value={pomodoro.shortBreak}
+            />
+            <Time
+                title="Session"
+                titleId="session-label"
+                inputId="session-length"
+                btnIncId="session-increment"
+                btnDecId="session-decrement"
+                handleValue={handleSession}
+                handleInc={increaseSession}
+                handleDec={decreaseSession}
+                isPlaying={pomodoro.isPlaying}
+                value={pomodoro.session}
+            />
             <div>
-                <input
-                    id="break-length"
-                    type="number"
-                    value={pomodoro.shortBreak}
-                    onChange={handleShortBreak}
-                    disabled={pomodoro.isPlaying}
-                />
-                <button
-                    id="break-increment"
-                    onClick={increaseShortBreak}
-                    className="h-6 w-6 disabled:opacity-75"
-                    disabled={pomodoro.isPlaying}
-                >
-                    <ChevronUpIcon />
-                </button>
-                <button
-                    id="break-decrement"
-                    onClick={decreaseShortBreak}
-                    className="h-6 w-6 disabled:opacity-75"
-                    disabled={pomodoro.isPlaying}
-                >
-                    <ChevronDownIcon />
-                </button>
-            </div>
-            <div id="session-label">Session</div>
-            <div>
-                <input
-                    id="session-length"
-                    type="number"
-                    value={pomodoro.session}
-                    onChange={handleSession}
-                    disabled={pomodoro.isPlaying}
-                />
-                <button
-                    id="session-increment"
-                    onClick={increaseSession}
-                    className="h-6 w-6 disabled:opacity-75"
-                    disabled={pomodoro.isPlaying}
-                >
-                    <ChevronUpIcon />
-                </button>
-                <button
-                    id="session-decrement"
-                    onClick={decreaseSession}
-                    className="h-6 w-6 disabled:opacity-75"
-                    disabled={pomodoro.isPlaying}
-                >
-                    <ChevronDownIcon />
-                </button>
-            </div>
-            <div>
-                <div className="max-w-[300px] w-full h-auto relative">
+                <div className="max-w-[275px] w-full h-auto relative">
                     <CircularProgressbar
                         value={pomodoro.timeInSecs}
                         maxValue={pomodoro.session * 60}
