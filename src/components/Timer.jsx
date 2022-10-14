@@ -25,7 +25,7 @@ const Time = ({
             <button
                 id={btnIncId}
                 onClick={handleInc}
-                className="h-6 w-6 disabled:opacity-75"
+                className="h-6 w-6 disabled:cursor-not-allowed"
                 disabled={isPlaying}
             >
                 <ChevronUpIcon />
@@ -33,7 +33,7 @@ const Time = ({
             <button
                 id={btnDecId}
                 onClick={handleDec}
-                className="h-6 w-6 disabled:opacity-75"
+                className="h-6 w-6 disabled:cursor-not-allowed"
                 disabled={isPlaying}
             >
                 <ChevronDownIcon />
@@ -43,62 +43,3 @@ const Time = ({
 }
 
 export default Time
-
-{
-    /* 
-    <div id="break-label">Short Break</div>
-    <div>
-            <input
-                id="break-length"
-                type="number"
-                value={pomodoro.shortBreak}
-                onChange={handleShortBreak}
-                disabled={pomodoro.isPlaying}
-            />
-            <button
-                id="break-increment"
-                onClick={increaseShortBreak}
-                className="h-6 w-6 disabled:opacity-75"
-                disabled={pomodoro.isPlaying}
-            >
-                <ChevronUpIcon />
-            </button>
-            <button
-                id="break-decrement"
-                onClick={decreaseShortBreak}
-                className="h-6 w-6 disabled:opacity-75"
-                disabled={pomodoro.isPlaying}
-            >
-                <ChevronDownIcon />
-            </button>
-        </div> */
-}
-
-{
-    /* <div id="session-label">Session</div>
-            <div>
-                <input
-                    id="session-length"
-                    type="number"
-                    value={pomodoro.session}
-                    onChange={handleSession}
-                    disabled={pomodoro.isPlaying}
-                />
-                <button
-                    id="session-increment"
-                    onClick={increaseSession}
-                    className="h-6 w-6 disabled:opacity-75"
-                    disabled={pomodoro.isPlaying}
-                >
-                    <ChevronUpIcon />
-                </button>
-                <button
-                    id="session-decrement"
-                    onClick={decreaseSession}
-                    className="h-6 w-6 disabled:opacity-75"
-                    disabled={pomodoro.isPlaying}
-                >
-                    <ChevronDownIcon />
-                </button>
-            </div> */
-}
