@@ -159,9 +159,13 @@ const Pomodoro = () => {
             </div>
 
             <div>
-                <h2 id="timer-left">{convertTime(time)}</h2>
-                <h2 onClick={startPomodoro} id="timer-label">
-                    Start
+                <h2 id="timer-label">Session</h2>
+                <h2 id="time-left">{convertTime(time)}</h2>
+                <h2 id="start_stop" onClick={startPausePomodoro}>
+                    {isPlaying ? 'Stop' : 'Start'}
+                </h2>
+                <h2 id="reset" onClick={resetPomodoro}>
+                    reset
                 </h2>
             </div>
         </div>
